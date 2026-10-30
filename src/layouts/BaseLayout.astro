@@ -1,0 +1,32 @@
+---
+import { DEVELOPER_PROFILE } from '../domain/portfolio-data';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${DEVELOPER_PROFILE.fullName} — ${DEVELOPER_PROFILE.headline}`,
+  description = DEVELOPER_PROFILE.subheadline,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={DEVELOPER_PROFILE.fullName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="bg-[#090d16] text-slate-100 antialiased selection:bg-sky-500/30 selection:text-sky-200 min-h-screen flex flex-col">
+    <div class="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(56,189,248,0.12),transparent)] pointer-events-none"></div>
+    <slot />
+  </body>
+</html>

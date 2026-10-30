@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import HeroSection from '../components/HeroSection.astro';
+import FeaturedProjectsGrid from '../components/FeaturedProjectsGrid.astro';
+import InteractivePlayground from '../components/InteractivePlayground';
+import TechStackRadar from '../components/TechStackRadar';
+import ContactSection from '../components/ContactSection';
+import { DEVELOPER_PROFILE } from '../domain/portfolio-data';
+---
+
+<BaseLayout>
+  <Navbar />
+
+  <main class="flex-1">
+    <HeroSection />
+    <FeaturedProjectsGrid />
+    <InteractivePlayground client:load />
+    <TechStackRadar client:visible />
+    <ContactSection client:visible />
+  </main>
+
+  <footer class="border-t border-slate-800/80 py-8 text-center text-xs font-mono text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span>© {new Date().getFullYear()} {DEVELOPER_PROFILE.fullName}. Engineered with Astro 5, React 19 &amp; Tailwind CSS.</span>
+      <div class="flex items-center gap-4">
+        <a href={DEVELOPER_PROFILE.githubUrl} target="_blank" rel="noopener noreferrer" class="hover:text-sky-400">GitHub</a>
+        <a href={DEVELOPER_PROFILE.linkedinUrl} target="_blank" rel="noopener noreferrer" class="hover:text-sky-400">LinkedIn</a>
+        <a href={`mailto:${DEVELOPER_PROFILE.email}`} class="hover:text-sky-400">{DEVELOPER_PROFILE.email}</a>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
