@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 430" width="100%" height="100%">
+  <style>
+    .bg { fill: #090d16; rx: 12px; stroke: #1e293b; stroke-width: 1.5px; }
+    .header { fill: #0f172a; }
+    .title { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 13px; fill: #94a3b8; font-weight: 600; }
+    .code { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 13px; }
+    .prompt { fill: #38bdf8; font-weight: bold; }
+    .cmd { fill: #f1f5f9; }
+    .flag { fill: #c084fc; }
+    .str { fill: #7dd3fc; }
+    .key { fill: #34d399; }
+    .comment { fill: #64748b; }
+    .badge { fill: #0284c7; rx: 4px; }
+    .badge-txt { font-family: 'SFMono-Regular', Consolas, monospace; font-size: 11px; fill: #ffffff; font-weight: bold; }
+    .step1 { opacity: 0; animation: fadeIn 8s infinite 0.3s; }
+    .step2 { opacity: 0; animation: fadeIn 8s infinite 1.4s; }
+    .step3 { opacity: 0; animation: fadeIn 8s infinite 2.5s; }
+    .step4 { opacity: 0; animation: fadeIn 8s infinite 3.8s; }
+    @keyframes fadeIn {
+      0%, 5% { opacity: 0; transform: translateY(3px); }
+      12%, 90% { opacity: 1; transform: translateY(0); }
+      96%, 100% { opacity: 0; }
+    }
+  </style>
+
+  <rect class="bg" x="2" y="2" width="916" height="426" rx="12"/>
+  <path class="header" d="M2 14 C2 7.37 7.37 2 14 2 L906 2 C912.63 2 918 7.37 918 14 L918 42 L2 42 Z"/>
+  <line x1="2" y1="42" x2="918" y2="42" stroke="#1e293b" stroke-width="1"/>
+
+  <circle cx="24" cy="22" r="6" fill="#ff5f56"/>
+  <circle cx="44" cy="22" r="6" fill="#ffbd2e"/>
+  <circle cx="64" cy="22" r="6" fill="#27c93f"/>
+  <text class="title" x="460" y="26" text-anchor="middle">Marc Navarro Gaya — Engineering Portfolio (Astro 5 + React 19 + Tailwind CSS)</text>
+
+  <g class="code step1">
+    <text x="26" y="74">
+      <tspan class="prompt">➜</tspan>
+      <tspan class="cmd"> Astro 5 Islands Architecture </tspan>
+      <tspan class="comment">• Zero-JS Static Shell + Selective React 19 Hydration</tspan>
+    </text>
+  </g>
+
+  <g class="code step2">
+    <rect class="badge" x="26" y="88" width="165" height="20"/>
+    <text class="badge-txt" x="34" y="102">4 FLAGSHIP SYSTEMS</text>
+    <text class="comment" x="204" y="102">yugioh-ts-ddd (DDD+CLIP) • yugi-mcp (22 Tools) • card-analysis (RoBERTa) • job-optimizer</text>
+  </g>
+
+  <g class="code step3">
+    <text x="26" y="136" class="cmd">┌───────────────────────────────────────────────────────────────────────────────────────┐</text>
+    <text x="26" y="158" class="cmd">│ <tspan class="key">[Hero Section]</tspan>      Dual CV Downloads (AI Track PDF &amp; Backend DDD Track PDF)        │</text>
+    <text x="26" y="180" class="cmd">│ <tspan class="key">[4 Project Cards]</tspan>   Metrics, Tech Pills, Architectural ADRs &amp; One-Click Demo Links  │</text>
+    <text x="26" y="202" class="cmd">│ <tspan class="flag">[Live Playground]</tspan>   1) RoBERTa /classify  2) MCP stdio Inspector  3) CLIP 512-D     │</text>
+    <text x="26" y="224" class="cmd">│ <tspan class="str">[Tech Stack Radar]</tspan>  Interactive SVG Polygon (Backend 94% • AI 95% • DevOps • UI)    │</text>
+    <text x="26" y="246" class="cmd">│ <tspan class="key">[Direct Contact]</tspan>    One-Click Copy (marcgaya@gmail.com) + WhatsApp + LinkedIn       │</text>
+    <text x="26" y="268" class="cmd">└───────────────────────────────────────────────────────────────────────────────────────┘</text>
+  </g>
+
+  <g class="code step4">
+    <line x1="26" y1="296" x2="894" y2="296" stroke="#1e293b" stroke-width="1"/>
+    <text x="26" y="324">
+      <tspan class="prompt">➜</tspan>
+      <tspan class="cmd"> docker compose up --build</tspan>
+      <tspan class="comment">  # Ready for Vercel, Cloudflare Pages &amp; Containerized Nginx</tspan>
+    </text>
+    <text x="26" y="354">
+      <tspan fill="#34d399" font-weight="bold">✔ Live at http://localhost:4321</tspan>
+      <tspan class="comment"> • LinkedIn: in/marc-navarro-gaya • GitHub: @marcgaya98</tspan>
+    </text>
+  </g>
+</svg>
