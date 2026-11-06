@@ -32,7 +32,7 @@ export default function TechStackRadar() {
         {/* Main 12-Column Blueprint Layout */}
         <div className="grid lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-neutral-800">
           {/* Left 5 Columns: Interactive System Layer Schematic + Domain Selector */}
-          <div className="lg:col-span-5 bg-[#090909] flex flex-col justify-between divide-y divide-neutral-800">
+          <div className="lg:col-span-5 min-w-0 bg-[#090909] flex flex-col justify-between divide-y divide-neutral-800">
             <div className="p-6 sm:p-8 blueprint-bg">
               <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400 mb-4">
                 <span>SCHEMATIC // LAYER TOPOLOGY</span>
@@ -141,7 +141,7 @@ export default function TechStackRadar() {
           </div>
 
           {/* Right 7 Columns: Production Evidence Specification Matrix */}
-          <div className="lg:col-span-7 bg-[#090909] divide-y divide-neutral-800 flex flex-col justify-between">
+          <div className="lg:col-span-7 min-w-0 bg-[#090909] divide-y divide-neutral-800 flex flex-col justify-between">
             <div className="p-6 sm:p-8 bg-[#0C0C0C] flex flex-wrap items-center justify-between gap-4">
               <div>
                 <div className="flex items-center gap-2 text-xs font-mono text-[#FF4F00]">

@@ -38,7 +38,7 @@ import { FEATURED_PROJECTS } from '../domain/portfolio-data';
     <div class="grid md:grid-cols-2 divide-y divide-neutral-800">
       {FEATURED_PROJECTS.map((project, index) => (
         <article
-          class={`p-6 sm:p-8 lg:p-10 bg-[#090909] hover:bg-[#0C0C0C] transition-colors flex flex-col justify-between relative ${
+          class={`min-w-0 p-6 sm:p-8 lg:p-10 bg-[#090909] hover:bg-[#0C0C0C] transition-colors flex flex-col justify-between relative ${
             index % 2 === 0 ? 'md:border-r md:border-neutral-800' : ''
           } ${index < 2 ? 'md:border-b md:border-neutral-800' : ''}`}
         >

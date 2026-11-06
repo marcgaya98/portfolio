@@ -230,16 +230,12 @@ export const MCP_TOOL_PRESETS: readonly McpToolPreset[] = [
       result: {
         content: [
           {
-            type: 'text',
-            text: JSON.stringify(
-              [
-                { id: 871, name: 'Headless Knight', attribute: 'EARTH', similarityScore: 94 },
-                { id: 2525, name: 'Zombyra the Dark', attribute: 'DARK', similarityScore: 93 },
-                { id: 392, name: 'Command Knight', attribute: 'FIRE', similarityScore: 92 },
-              ],
-              null,
-              2
-            ),
+            type: 'json',
+            matches: [
+              { id: 871, name: 'Headless Knight', attribute: 'EARTH', similarityScore: 94 },
+              { id: 2525, name: 'Zombyra the Dark', attribute: 'DARK', similarityScore: 93 },
+              { id: 392, name: 'Command Knight', attribute: 'FIRE', similarityScore: 92 },
+            ],
           },
         ],
       },
@@ -262,21 +258,17 @@ export const MCP_TOOL_PRESETS: readonly McpToolPreset[] = [
       result: {
         content: [
           {
-            type: 'text',
-            text: JSON.stringify(
-              {
-                cardId: 18,
-                isExclusive: false,
-                totalSources: 3,
-                sources: {
-                  boosterPacks: ['First Monster Pack', 'Step Up Spell/Trap'],
-                  characterRewards: ['Jaden Yuki (Partner Lv. 4)'],
-                  cardConverter: false,
-                },
+            type: 'json',
+            data: {
+              cardId: 18,
+              isExclusive: false,
+              totalSources: 3,
+              sources: {
+                boosterPacks: ['First Monster Pack', 'Step Up Spell/Trap'],
+                characterRewards: ['Jaden Yuki (Partner Lv. 4)'],
+                cardConverter: false,
               },
-              null,
-              2
-            ),
+            },
           },
         ],
       },
@@ -299,18 +291,14 @@ export const MCP_TOOL_PRESETS: readonly McpToolPreset[] = [
       result: {
         content: [
           {
-            type: 'text',
-            text: JSON.stringify(
-              {
-                listName: 'Game Original (GX Tag Force)',
-                forbiddenCount: 18,
-                limitedCount: 44,
-                semiLimitedCount: 19,
-                totalRestrictedCards: 81,
-              },
-              null,
-              2
-            ),
+            type: 'json',
+            data: {
+              listName: 'Game Original (GX Tag Force)',
+              forbiddenCount: 18,
+              limitedCount: 44,
+              semiLimitedCount: 19,
+              totalRestrictedCards: 81,
+            },
           },
         ],
       },

@@ -29,7 +29,7 @@ function RobertaClassifierPanel({
 
   return (
     <div className="grid lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-neutral-800">
-      <div className="lg:col-span-6 p-6 sm:p-8 space-y-5 bg-[#090909]">
+      <div className="lg:col-span-6 min-w-0 p-6 sm:p-8 space-y-5 bg-[#090909]">
         <div>
           <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-2.5">
             // SELECT PRESET CORPUS OR INPUT CUSTOM PSCT TEXT:
@@ -82,15 +82,15 @@ function RobertaClassifierPanel({
           </div>
           {livePredictions.length === 0 ? (
             <div className="text-xs font-mono text-neutral-400 bg-[#0E0E0E] border border-neutral-800 p-3.5">
-              0 classes exceeded threshold {threshold.toFixed(2)}. Lower threshold or include terms like "Special Summon", "Destroy", "Banish", or "Deck".
+              0 classes exceeded threshold {threshold.toFixed(2)}. Lower threshold or include terms like &quot;Special Summon&quot;, &quot;Destroy&quot;, &quot;Banish&quot;, or &quot;Deck&quot;.
             </div>
           ) : (
             <div className="divide-y divide-neutral-800 border border-neutral-800 bg-[#0C0C0C]">
               {livePredictions.map((pred) => (
                 <div key={pred.genre} className="p-3 space-y-1.5">
-                  <div className="flex items-center justify-between text-xs font-mono tabular-nums">
+                  <div className="flex items-center justify-between gap-2 text-xs font-mono tabular-nums">
                     <span className="text-[#EDEDED] font-semibold">{pred.genre}</span>
-                    <span className="text-neutral-300">
+                    <span className="text-neutral-300 shrink-0">
                       {(pred.probability * 100).toFixed(1)}% <span className="text-neutral-500">[{pred.confidence}]</span>
                     </span>
                   </div>
@@ -107,12 +107,12 @@ function RobertaClassifierPanel({
         </div>
       </div>
 
-      <div className="lg:col-span-6 p-6 sm:p-8 bg-[#0B0B0B] font-mono text-xs space-y-3">
-        <div className="flex items-center justify-between text-neutral-400 border-b border-neutral-800 pb-2.5 tabular-nums">
+      <div className="lg:col-span-6 min-w-0 p-6 sm:p-8 bg-[#0B0B0B] font-mono text-xs space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-2 text-neutral-400 border-b border-neutral-800 pb-2.5 tabular-nums">
           <span className="text-[#EDEDED]">POST /classify HTTP/1.1</span>
           <span className="text-[#FF4F00]">18.2ms • FP16 TENSOR</span>
         </div>
-        <pre className="p-4 bg-[#070707] border border-neutral-800 text-neutral-200 overflow-x-auto leading-relaxed tabular-nums">
+        <pre className="p-4 bg-[#070707] border border-neutral-800 text-neutral-200 max-w-full overflow-x-auto whitespace-pre-wrap break-words leading-relaxed tabular-nums">
           {JSON.stringify(
             {
               results: [
@@ -149,7 +149,7 @@ function McpInspectorPanel({ selectedMcpId, onSelectMcp }: McpPanelProps) {
 
   return (
     <div className="grid lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-neutral-800">
-      <div className="lg:col-span-5 p-6 sm:p-8 space-y-4 bg-[#090909]">
+      <div className="lg:col-span-5 min-w-0 p-6 sm:p-8 space-y-4 bg-[#090909]">
         <div className="text-[11px] font-mono uppercase tracking-wider text-neutral-400">
           // REGISTERED MCP TOOLS (22 TOTAL • O(1) REGISTRY):
         </div>
@@ -167,11 +167,11 @@ function McpInspectorPanel({ selectedMcpId, onSelectMcp }: McpPanelProps) {
                     : 'bg-[#0C0C0C] border-neutral-800 text-neutral-300 hover:border-neutral-600'
                 }`}
               >
-                <div className="flex items-center justify-between font-mono text-xs font-bold">
-                  <span className={isSelected ? 'text-[#FF4F00]' : 'text-[#EDEDED]'}>
+                <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs font-bold">
+                  <span className={`break-all sm:break-normal ${isSelected ? 'text-[#FF4F00]' : 'text-[#EDEDED]'}`}>
                     {tool.toolName}
                   </span>
-                  <span className="text-[10px] px-2 py-0.5 bg-[#090909] border border-neutral-800 text-neutral-400">
+                  <span className="text-[10px] px-2 py-0.5 bg-[#090909] border border-neutral-800 text-neutral-400 shrink-0">
                     {tool.domainPort}
                   </span>
                 </div>
@@ -182,8 +182,8 @@ function McpInspectorPanel({ selectedMcpId, onSelectMcp }: McpPanelProps) {
         </div>
       </div>
 
-      <div className="lg:col-span-7 p-6 sm:p-8 bg-[#0B0B0B] font-mono text-xs space-y-4">
-        <div className="p-3 bg-[#070707] border border-neutral-800 text-neutral-300">
+      <div className="lg:col-span-7 min-w-0 p-6 sm:p-8 bg-[#0B0B0B] font-mono text-xs space-y-4">
+        <div className="p-3 bg-[#070707] border border-neutral-800 text-neutral-300 break-words leading-relaxed">
           <span className="font-bold text-[#FF4F00]">[STDERR ISOLATION]</span>{' '}
           {currentMcpPreset.stderrLog}
         </div>
@@ -192,7 +192,7 @@ function McpInspectorPanel({ selectedMcpId, onSelectMcp }: McpPanelProps) {
           <div className="text-neutral-400 mb-1.5 tabular-nums">
             [STDIN -&gt; MCP SERVER] JSON-RPC 2.0 REQUEST ({currentMcpPreset.executionTimeMs}ms):
           </div>
-          <pre className="p-3.5 bg-[#070707] border border-neutral-800 text-neutral-200 overflow-x-auto">
+          <pre className="p-3.5 bg-[#070707] border border-neutral-800 text-neutral-200 max-w-full overflow-x-auto whitespace-pre-wrap break-words leading-relaxed">
             {JSON.stringify(
               {
                 jsonrpc: '2.0',
@@ -213,7 +213,7 @@ function McpInspectorPanel({ selectedMcpId, onSelectMcp }: McpPanelProps) {
           <div className="text-neutral-400 mb-1.5">
             [STDOUT &lt;- MCP SERVER] PURE JSON-RPC 2.0 FRAME (0 BYTES NOISE):
           </div>
-          <pre className="p-3.5 bg-[#070707] border border-neutral-800 text-[#EDEDED] overflow-x-auto">
+          <pre className="p-3.5 bg-[#070707] border border-neutral-800 text-[#EDEDED] max-w-full overflow-x-auto whitespace-pre-wrap break-words leading-relaxed">
             {JSON.stringify(currentMcpPreset.responsePayload, null, 2)}
           </pre>
         </div>
@@ -233,7 +233,7 @@ function ClipVectorSearchPanel({ selectedClipId, onSelectClip }: ClipPanelProps)
 
   return (
     <div className="grid lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-neutral-800">
-      <div className="lg:col-span-5 p-6 sm:p-8 space-y-4 bg-[#090909]">
+      <div className="lg:col-span-5 min-w-0 p-6 sm:p-8 space-y-4 bg-[#090909]">
         <div className="text-[11px] font-mono uppercase tracking-wider text-neutral-400">
           // MULTIMODAL TEXT-TO-IMAGE QUERIES (ONNX CLIP VIT-B/32):
         </div>
@@ -254,7 +254,7 @@ function ClipVectorSearchPanel({ selectedClipId, onSelectClip }: ClipPanelProps)
                 <div className={`text-xs font-bold font-mono ${isSelected ? 'text-[#FF4F00]' : 'text-[#EDEDED]'}`}>
                   {preset.queryLabel}
                 </div>
-                <div className="text-xs font-mono text-neutral-400 mt-1">
+                <div className="text-xs font-mono text-neutral-400 mt-1 break-words">
                   prompt: &quot;{preset.queryText}&quot;
                 </div>
               </button>
@@ -266,7 +266,7 @@ function ClipVectorSearchPanel({ selectedClipId, onSelectClip }: ClipPanelProps)
           {currentClipPreset.matches.map((match) => (
             <div
               key={match.cardId}
-              className="flex items-center justify-between p-3.5 tabular-nums"
+              className="flex flex-wrap items-center justify-between gap-2 p-3.5 tabular-nums"
             >
               <div>
                 <div className="text-xs font-bold text-[#EDEDED] font-mono">
@@ -276,7 +276,7 @@ function ClipVectorSearchPanel({ selectedClipId, onSelectClip }: ClipPanelProps)
                   {match.attribute} // {match.frameType}
                 </div>
               </div>
-              <span className="px-2.5 py-1 bg-[#141414] border border-neutral-700 text-[#FF4F00] font-mono text-xs font-bold">
+              <span className="px-2.5 py-1 bg-[#141414] border border-neutral-700 text-[#FF4F00] font-mono text-xs font-bold shrink-0">
                 {match.similarityScore}% COSINE
               </span>
             </div>
@@ -284,12 +284,12 @@ function ClipVectorSearchPanel({ selectedClipId, onSelectClip }: ClipPanelProps)
         </div>
       </div>
 
-      <div className="lg:col-span-7 p-6 sm:p-8 bg-[#0B0B0B] font-mono text-xs space-y-3">
-        <div className="flex items-center justify-between text-neutral-400 border-b border-neutral-800 pb-2.5 tabular-nums">
+      <div className="lg:col-span-7 min-w-0 p-6 sm:p-8 bg-[#0B0B0B] font-mono text-xs space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-2 text-neutral-400 border-b border-neutral-800 pb-2.5 tabular-nums">
           <span className="text-[#EDEDED]">POST /api/semantic-search HTTP/1.1</span>
           <span className="text-[#FF4F00]">{currentClipPreset.executionTimeMs}ms • 512-D L2</span>
         </div>
-        <pre className="p-4 bg-[#070707] border border-neutral-800 text-neutral-200 overflow-x-auto leading-relaxed tabular-nums">
+        <pre className="p-4 bg-[#070707] border border-neutral-800 text-neutral-200 max-w-full overflow-x-auto whitespace-pre-wrap break-words leading-relaxed tabular-nums">
           {JSON.stringify(
             {
               success: true,
@@ -344,7 +344,7 @@ export default function InteractivePlayground() {
 
   return (
     <section id="playground" className="border-b border-neutral-800">
-      <div className="max-w-6xl mx-auto border-x border-neutral-800">
+      <div className="max-w-6xl mx-auto border-x border-neutral-800 overflow-hidden">
         {/* Section Header */}
         <div className="p-6 sm:p-10 border-b border-neutral-800 bg-[#0B0B0B] flex flex-col md:flex-row md:items-end justify-between gap-6 relative">
           <span className="hidden sm:block absolute top-3 right-3 font-mono text-xs text-neutral-700 select-none">
@@ -368,78 +368,78 @@ export default function InteractivePlayground() {
           <button
             type="button"
             onClick={() => setActiveMode('card-analysis')}
-            className={`p-4 sm:p-5 text-left font-mono text-xs transition-colors flex items-center justify-between cursor-pointer ${
+            className={`min-w-0 p-4 sm:p-5 text-left font-mono text-xs transition-colors flex items-center justify-between gap-2 cursor-pointer ${
               activeMode === 'card-analysis'
                 ? 'bg-[#121212] text-[#EDEDED] border-l-2 border-l-[#FF4F00]'
                 : 'text-neutral-400 hover:bg-[#0D0D0D] hover:text-neutral-200'
             }`}
           >
-            <div className="flex items-center gap-3">
-              <Cpu className={`w-4 h-4 ${activeMode === 'card-analysis' ? 'text-[#FF4F00]' : 'text-neutral-500'}`} />
-              <div>
-                <div className="font-bold">01 // ROBERTA MULTI-LABEL API</div>
-                <div className="text-[11px] text-neutral-500 mt-0.5">FastAPI • POST /classify</div>
+            <div className="flex items-center gap-3 min-w-0">
+              <Cpu className={`w-4 h-4 shrink-0 ${activeMode === 'card-analysis' ? 'text-[#FF4F00]' : 'text-neutral-500'}`} />
+              <div className="min-w-0">
+                <div className="font-bold truncate">01 // ROBERTA MULTI-LABEL API</div>
+                <div className="text-[11px] text-neutral-500 mt-0.5 truncate">FastAPI • POST /classify</div>
               </div>
             </div>
             {activeMode === 'card-analysis' && (
-              <span className="w-2 h-2 bg-[#FF4F00]"></span>
+              <span className="w-2 h-2 bg-[#FF4F00] shrink-0"></span>
             )}
           </button>
 
           <button
             type="button"
             onClick={() => setActiveMode('yugi-mcp')}
-            className={`p-4 sm:p-5 text-left font-mono text-xs transition-colors flex items-center justify-between cursor-pointer ${
+            className={`min-w-0 p-4 sm:p-5 text-left font-mono text-xs transition-colors flex items-center justify-between gap-2 cursor-pointer ${
               activeMode === 'yugi-mcp'
                 ? 'bg-[#121212] text-[#EDEDED] border-l-2 border-l-[#FF4F00]'
                 : 'text-neutral-400 hover:bg-[#0D0D0D] hover:text-neutral-200'
             }`}
           >
-            <div className="flex items-center gap-3">
-              <Terminal className={`w-4 h-4 ${activeMode === 'yugi-mcp' ? 'text-[#FF4F00]' : 'text-neutral-500'}`} />
-              <div>
-                <div className="font-bold">02 // MCP SERVER INSPECTOR</div>
-                <div className="text-[11px] text-neutral-500 mt-0.5">JSON-RPC 2.0 • stdio</div>
+            <div className="flex items-center gap-3 min-w-0">
+              <Terminal className={`w-4 h-4 shrink-0 ${activeMode === 'yugi-mcp' ? 'text-[#FF4F00]' : 'text-neutral-500'}`} />
+              <div className="min-w-0">
+                <div className="font-bold truncate">02 // MCP SERVER INSPECTOR</div>
+                <div className="text-[11px] text-neutral-500 mt-0.5 truncate">JSON-RPC 2.0 • stdio</div>
               </div>
             </div>
             {activeMode === 'yugi-mcp' && (
-              <span className="w-2 h-2 bg-[#FF4F00]"></span>
+              <span className="w-2 h-2 bg-[#FF4F00] shrink-0"></span>
             )}
           </button>
 
           <button
             type="button"
             onClick={() => setActiveMode('yugioh-ts-ddd')}
-            className={`p-4 sm:p-5 text-left font-mono text-xs transition-colors flex items-center justify-between cursor-pointer ${
+            className={`min-w-0 p-4 sm:p-5 text-left font-mono text-xs transition-colors flex items-center justify-between gap-2 cursor-pointer ${
               activeMode === 'yugioh-ts-ddd'
                 ? 'bg-[#121212] text-[#EDEDED] border-l-2 border-l-[#FF4F00]'
                 : 'text-neutral-400 hover:bg-[#0D0D0D] hover:text-neutral-200'
             }`}
           >
-            <div className="flex items-center gap-3">
-              <ScanSearch className={`w-4 h-4 ${activeMode === 'yugioh-ts-ddd' ? 'text-[#FF4F00]' : 'text-neutral-500'}`} />
-              <div>
-                <div className="font-bold">03 // ONNX CLIP 512-D SEARCH</div>
-                <div className="text-[11px] text-neutral-500 mt-0.5">DDD Core • Cosine Similarity</div>
+            <div className="flex items-center gap-3 min-w-0">
+              <ScanSearch className={`w-4 h-4 shrink-0 ${activeMode === 'yugioh-ts-ddd' ? 'text-[#FF4F00]' : 'text-neutral-500'}`} />
+              <div className="min-w-0">
+                <div className="font-bold truncate">03 // ONNX CLIP 512-D SEARCH</div>
+                <div className="text-[11px] text-neutral-500 mt-0.5 truncate">DDD Core • Cosine Similarity</div>
               </div>
             </div>
             {activeMode === 'yugioh-ts-ddd' && (
-              <span className="w-2 h-2 bg-[#FF4F00]"></span>
+              <span className="w-2 h-2 bg-[#FF4F00] shrink-0"></span>
             )}
           </button>
         </div>
 
         {/* Console Telemetry Status Strip */}
         <div className="px-6 py-2.5 bg-[#0E0E0E] border-b border-neutral-800 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono">
-          <div className="flex items-center gap-2 text-neutral-300">
-            <Activity className="w-3.5 h-3.5 text-[#FF4F00]" />
-            <span>
+          <div className="flex items-center gap-2 text-neutral-300 min-w-0">
+            <Activity className="w-3.5 h-3.5 text-[#FF4F00] shrink-0" />
+            <span className="break-words">
               {activeMode === 'card-analysis' && 'RUNTIME: PyTorch 2.x + RoBERTa-base (11 Mechanics Classification)'}
               {activeMode === 'yugi-mcp' && 'RUNTIME: @modelcontextprotocol/sdk v2.0 (22 Registered Agent Tools)'}
               {activeMode === 'yugioh-ts-ddd' && 'RUNTIME: Quantized ONNX CLIP ViT-B/32 (512-D L2 Normalized Vectors)'}
             </span>
           </div>
-          <span className="px-2 py-0.5 bg-[#141414] border border-neutral-700 text-[#FF4F00] tabular-nums">
+          <span className="px-2 py-0.5 bg-[#141414] border border-neutral-700 text-[#FF4F00] tabular-nums shrink-0">
             STATUS: 200 OK // INTERACTIVE
           </span>
         </div>
