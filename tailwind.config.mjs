@@ -4,14 +4,20 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['JetBrains Mono', 'SFMono-Regular', 'Consolas', 'monospace'],
+        sans: ['Geist', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Consolas', 'monospace'],
       },
       colors: {
-        surface: {
-          900: '#090d16',
-          800: '#0f1623',
-          700: '#161f30',
+        carbon: {
+          950: '#090909',
+          900: '#0E0E0E',
+          850: '#141414',
+          800: '#1A1A1A',
+        },
+        accent: {
+          DEFAULT: '#FF4F00',
+          hover: '#FF6622',
+          muted: 'rgba(255, 79, 0, 0.12)',
         },
       },
     },

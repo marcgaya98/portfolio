@@ -2,69 +2,117 @@
 import { FEATURED_PROJECTS } from '../domain/portfolio-data';
 ---
 
-<section id="projects" class="py-20 border-b border-slate-800/70">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+<section id="projects" class="border-b border-neutral-800">
+  <div class="max-w-6xl mx-auto border-x border-neutral-800">
+    <!-- Section Blueprint Header -->
+    <div class="p-6 sm:p-10 border-b border-neutral-800 bg-[#0B0B0B] flex flex-col md:flex-row md:items-end justify-between gap-6 relative">
+      <span class="hidden sm:block absolute top-3 right-3 font-mono text-xs text-neutral-700 select-none">+</span>
       <div>
-        <span class="text-xs font-mono uppercase tracking-widest text-sky-400">Production Architecture</span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">
-          Featured Engineering Projects
+        <div class="text-xs font-mono uppercase tracking-wider text-[#FF4F00]">
+          [01 // PRODUCTION SYSTEMS &amp; ARCHITECTURAL DECISIONS]
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-[#EDEDED] mt-2">
+          Engineered Systems &amp; Specifications
         </h2>
       </div>
-      <p class="text-sm text-slate-400 max-w-md">
-        4 interconnected repositories engineered with Clean Architecture, SOLID principles, automated test suites, and single-command Docker deployments.
+      <p class="text-xs sm:text-sm font-mono text-neutral-400 max-w-md leading-relaxed">
+        4 production repositories engineered with Hexagonal Architecture, SOLID ports, automated test suites, and deterministic Docker topologies.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6">
+    <!-- Ecosystem Interoperability Strip -->
+    <div class="px-6 py-3.5 border-b border-neutral-800 bg-[#0E0E0E] flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono">
+      <span class="text-[#FF4F00] uppercase font-bold">SYSTEM TOPOLOGY //</span>
+      <div class="flex flex-wrap items-center gap-2 text-neutral-300">
+        <span class="px-2 py-0.5 bg-[#141414] border border-neutral-800">LLM Host (Claude / IDE)</span>
+        <span class="text-neutral-600">--[stdio JSON-RPC]--&gt;</span>
+        <span class="px-2 py-0.5 bg-[#141414] border border-neutral-800 text-[#EDEDED]">yugi-mcp (22 Tools)</span>
+        <span class="text-neutral-600">--[5 ISP Ports]--&gt;</span>
+        <span class="px-2 py-0.5 bg-[#141414] border border-neutral-800 text-[#EDEDED]">yugioh-ts-ddd (512-D CLIP)</span>
+        <span class="text-neutral-600">+</span>
+        <span class="px-2 py-0.5 bg-[#141414] border border-neutral-800 text-[#EDEDED]">card-analysis (RoBERTa)</span>
+      </div>
+    </div>
+
+    <!-- 2x2 Exposed Hairline Blueprint Grid -->
+    <div class="grid md:grid-cols-2 divide-y divide-neutral-800">
       {FEATURED_PROJECTS.map((project, index) => (
-        <article class="flex flex-col justify-between rounded-2xl bg-slate-900/80 border border-slate-800/90 hover:border-sky-500/50 p-6 shadow-xl transition-all">
-          <div>
-            <!-- Top Badge & Index -->
-            <div class="flex items-center justify-between gap-2 mb-4">
-              <span class="px-2.5 py-1 rounded-md bg-sky-500/10 border border-sky-500/30 text-sky-300 text-xs font-mono">
+        <article
+          class={`p-6 sm:p-8 lg:p-10 bg-[#090909] hover:bg-[#0C0C0C] transition-colors flex flex-col justify-between relative ${
+            index % 2 === 0 ? 'md:border-r md:border-neutral-800' : ''
+          } ${index < 2 ? 'md:border-b md:border-neutral-800' : ''}`}
+        >
+          <span class="hidden sm:block absolute top-3 right-3 font-mono text-xs text-neutral-700 select-none">+</span>
+
+          <div class="space-y-5">
+            <!-- System Code & Badge -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pr-4">
+              <span class="text-xs font-mono font-bold text-[#FF4F00]">
+                {project.systemCode}
+              </span>
+              <span class="px-2 py-0.5 bg-[#121212] border border-neutral-800 text-[10px] font-mono text-neutral-300 tracking-wider">
                 {project.categoryBadge}
               </span>
-              <span class="text-xs font-mono text-slate-500">0{index + 1} / 04</span>
             </div>
 
             <!-- Title & Subtitle -->
-            <h3 class="text-xl font-bold text-white font-mono">
-              <a
-                href={project.repositoryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:text-sky-400 transition-colors"
-              >
-                {project.title} ↗
-              </a>
-            </h3>
-            <p class="text-sm text-slate-300 font-medium mt-1">{project.subtitle}</p>
+            <div>
+              <h3 class="text-xl sm:text-2xl font-bold text-[#EDEDED] font-mono tracking-tight">
+                <a
+                  href={project.repositoryUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-[#FF4F00] transition-colors inline-flex items-center gap-2"
+                >
+                  <span>{project.title}</span>
+                  <svg class="w-4 h-4 text-neutral-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </h3>
+              <p class="text-xs sm:text-sm text-neutral-400 mt-1 leading-snug">
+                {project.subtitle}
+              </p>
+            </div>
 
-            <!-- Key Metrics Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 my-5">
+            <!-- Tabular Metrics Bar -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 border border-neutral-800 bg-[#0D0D0D] divide-x divide-y sm:divide-y-0 divide-neutral-800 tabular-nums">
               {project.metrics.map((metric) => (
-                <div class="rounded-lg bg-slate-950/80 border border-slate-800/80 px-3 py-2">
-                  <div class="text-xs font-mono font-bold text-emerald-400">{metric.value}</div>
-                  <div class="text-[11px] text-slate-400 truncate">{metric.label}</div>
+                <div class="px-3 py-2.5">
+                  <div class="text-xs font-mono font-bold text-[#EDEDED]">{metric.value}</div>
+                  <div class="text-[10px] font-mono text-neutral-500 uppercase truncate mt-0.5">
+                    {metric.label}
+                  </div>
                 </div>
               ))}
             </div>
 
-            <!-- Problem & Architectural Trade-off (ADR) -->
-            <div class="space-y-2.5 text-xs text-slate-300 leading-relaxed bg-slate-950/50 rounded-xl p-4 border border-slate-800/60">
-              <p>
-                <strong class="text-slate-100 font-semibold">Problem Solved:</strong> {project.problemSolved}
-              </p>
-              <p>
-                <strong class="text-sky-300 font-semibold">Architectural ADR:</strong> {project.architecturalDecision}
-              </p>
+            <!-- Dataflow Pipeline Spec -->
+            <div class="p-3 bg-[#0D0D0D] border border-neutral-800/90 font-mono text-[11px] text-neutral-400 leading-relaxed">
+              <span class="text-neutral-200 font-bold">PIPELINE:</span> {project.architectureTopology}
             </div>
 
-            <!-- Tech Stack Pills -->
-            <div class="flex flex-wrap gap-1.5 mt-4">
+            <!-- Problem & Architectural Decision Record (ADR) -->
+            <div class="space-y-3 text-xs leading-relaxed">
+              <div class="text-neutral-300">
+                <span class="font-mono text-[11px] uppercase text-neutral-500 block mb-0.5">
+                  // DOMAIN CHALLENGE
+                </span>
+                {project.problemSolved}
+              </div>
+
+              <div class="border-l-2 border-[#FF4F00] pl-3.5 py-0.5 text-neutral-200">
+                <span class="font-mono text-[11px] uppercase text-[#FF4F00] font-bold block mb-0.5">
+                  // ARCHITECTURAL DECISION RECORD (ADR)
+                </span>
+                {project.architecturalDecision}
+              </div>
+            </div>
+
+            <!-- Tech Stack Tags -->
+            <div class="flex flex-wrap gap-1.5 pt-1">
               {project.techTags.map((tag) => (
-                <span class="px-2.5 py-1 rounded-full bg-slate-800/90 text-slate-200 text-[11px] font-mono border border-slate-700/70">
+                <span class="px-2.5 py-1 bg-[#111111] text-neutral-300 text-[11px] font-mono border border-neutral-800">
                   {tag}
                 </span>
               ))}
@@ -72,28 +120,30 @@ import { FEATURED_PROJECTS } from '../domain/portfolio-data';
           </div>
 
           <!-- Footer Actions -->
-          <div class="mt-6 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
-            <code class="text-[11px] font-mono text-slate-400 bg-slate-950 px-2.5 py-1 rounded border border-slate-800">
+          <div class="mt-7 pt-4 border-t border-neutral-800 flex flex-wrap items-center justify-between gap-3">
+            <code class="text-[11px] font-mono text-neutral-400 bg-[#0D0D0D] px-2.5 py-1.5 border border-neutral-800">
               $ {project.quickstartCommand}
             </code>
 
-            <div class="flex items-center gap-2.5">
+            <div class="flex items-center gap-2">
               {project.playgroundMode && (
                 <a
-                  href={`#playground`}
+                  href="#playground"
                   data-playground-mode={project.playgroundMode}
-                  class="px-3 py-1.5 rounded-lg bg-purple-500/15 hover:bg-purple-500/25 text-purple-300 border border-purple-500/30 text-xs font-mono transition-colors"
+                  class="px-3 py-1.5 bg-[#141414] hover:border-[#FF4F00] text-[#EDEDED] border border-neutral-700 text-xs font-mono transition-colors inline-flex items-center gap-1.5"
                 >
-                  ⚡ Live Demo ↓
+                  <span class="w-1.5 h-1.5 bg-[#FF4F00]"></span>
+                  <span>SANDBOX</span>
                 </a>
               )}
               <a
                 href={project.repositoryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="px-3.5 py-1.5 rounded-lg bg-sky-500/15 hover:bg-sky-500/25 text-sky-300 border border-sky-500/30 text-xs font-mono font-semibold transition-colors"
+                class="px-3.5 py-1.5 bg-[#EDEDED] hover:bg-[#FF4F00] text-[#090909] text-xs font-mono font-bold transition-colors inline-flex items-center gap-1"
               >
-                GitHub Repo ↗
+                <span>SOURCE</span>
+                <span>↗</span>
               </a>
             </div>
           </div>

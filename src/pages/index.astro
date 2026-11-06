@@ -20,13 +20,22 @@ import { DEVELOPER_PROFILE } from '../domain/portfolio-data';
     <ContactSection client:visible />
   </main>
 
-  <footer class="border-t border-slate-800/80 py-8 text-center text-xs font-mono text-slate-500">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <span>© {new Date().getFullYear()} {DEVELOPER_PROFILE.fullName}. Engineered with Astro 5, React 19 &amp; Tailwind CSS.</span>
-      <div class="flex items-center gap-4">
-        <a href={DEVELOPER_PROFILE.githubUrl} target="_blank" rel="noopener noreferrer" class="hover:text-sky-400">GitHub</a>
-        <a href={DEVELOPER_PROFILE.linkedinUrl} target="_blank" rel="noopener noreferrer" class="hover:text-sky-400">LinkedIn</a>
-        <a href={`mailto:${DEVELOPER_PROFILE.email}`} class="hover:text-sky-400">{DEVELOPER_PROFILE.email}</a>
+  <footer class="bg-[#090909] text-xs font-mono text-neutral-500">
+    <div class="max-w-6xl mx-auto border-x border-neutral-800 px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 bg-[#FF4F00]"></span>
+        <span>© {new Date().getFullYear()} {DEVELOPER_PROFILE.fullName} // ASTRO 5 • REACT 19 • GEIST BLUEPRINT</span>
+      </div>
+      <div class="flex items-center gap-5">
+        <a href={DEVELOPER_PROFILE.githubUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[#FF4F00] transition-colors">
+          GITHUB ↗
+        </a>
+        <a href={DEVELOPER_PROFILE.linkedinUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[#FF4F00] transition-colors">
+          LINKEDIN ↗
+        </a>
+        <a href={`mailto:${DEVELOPER_PROFILE.email}`} class="hover:text-[#FF4F00] transition-colors">
+          {DEVELOPER_PROFILE.email}
+        </a>
       </div>
     </div>
   </footer>

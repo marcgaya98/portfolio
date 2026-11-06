@@ -2,6 +2,7 @@ export type PlaygroundModeId = 'card-analysis' | 'yugi-mcp' | 'yugioh-ts-ddd';
 
 export interface CvDocument {
   readonly id: 'ai' | 'backend';
+  readonly code: string;
   readonly label: string;
   readonly badge: string;
   readonly filePath: string;
@@ -32,9 +33,11 @@ export interface ProjectMetric {
 
 export interface FeaturedProject {
   readonly id: string;
+  readonly systemCode: string;
   readonly title: string;
   readonly subtitle: string;
   readonly categoryBadge: string;
+  readonly architectureTopology: string;
   readonly repositoryUrl: string;
   readonly playgroundMode?: PlaygroundModeId;
   readonly techTags: readonly string[];
@@ -88,15 +91,18 @@ export interface ClipSearchPreset {
 
 export interface SkillItem {
   readonly name: string;
-  readonly proficiency: number;
-  readonly highlight: string;
+  readonly specification: string;
+  readonly productionEvidence: string;
+  readonly repositoryName?: string;
+  readonly repositoryUrl?: string;
 }
 
 export interface SkillRadarCategory {
   readonly id: string;
+  readonly domainCode: string;
   readonly title: string;
   readonly subtitle: string;
-  readonly radarScore: number;
-  readonly accentColor: string;
+  readonly metricsSummary: string;
+  readonly layerRole: string;
   readonly skills: readonly SkillItem[];
 }

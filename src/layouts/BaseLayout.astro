@@ -24,9 +24,31 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+      }
+      .tabular-nums {
+        font-variant-numeric: tabular-nums;
+      }
+      .blueprint-bg {
+        background-size: 32px 32px;
+        background-image:
+          linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      }
+    </style>
   </head>
-  <body class="bg-[#090d16] text-slate-100 antialiased selection:bg-sky-500/30 selection:text-sky-200 min-h-screen flex flex-col">
-    <div class="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(56,189,248,0.12),transparent)] pointer-events-none"></div>
+  <body class="bg-[#090909] text-[#EDEDED] font-sans antialiased selection:bg-[#FF4F00] selection:text-[#090909] min-h-screen flex flex-col">
     <slot />
   </body>
 </html>
